@@ -5,6 +5,8 @@ import { ler, inserir, lerUm, atualizar, excluir } from './src/aluno.js';
 const app = express();
 const porta = process.env.PORT || 3000;
 
+app.use(express.json())
+
 /* ROTAS */
 // Configurando rota para o início da aplicação
 app.get('/', function(req, res) {
@@ -46,8 +48,6 @@ app.delete('/alunos/:id', (req, res) => {
    const id = parseInt(req.params.id);
    excluir(id, res);
 });
-
-
 
 /* SERVIDOR */
 app.listen(porta, () => {
